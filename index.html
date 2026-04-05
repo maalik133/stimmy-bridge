@@ -2,511 +2,185 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stimulus Assistance</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      min-height: 100%;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #070707;
-      color: #ffffff;
-    }
+  <style>
+    * { box-sizing: border-box; }
 
     body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #070707;
+      color: #fff;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 30%),
-        linear-gradient(180deg, #0b0b0b 0%, #050505 100%);
     }
 
-    .page {
-      width: 100%;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 12px 10px 20px;
-    }
-
-    .phone-shell {
+    .container {
       width: 100%;
       max-width: 390px;
+      padding: 12px;
     }
 
     .card {
-      width: 100%;
-      background: #000000;
-      border-radius: 18px;
-      padding: 16px 14px 20px;
+      background: #000;
+      border-radius: 16px;
+      padding: 16px;
       border: 1px solid rgba(255,255,255,0.05);
-      box-shadow: 0 10px 35px rgba(0,0,0,0.4);
     }
 
-    .top-proof {
+    .proof {
       display: flex;
       justify-content: flex-end;
-      margin-bottom: 14px;
-      min-height: 52px;
+      margin-bottom: 12px;
     }
 
-    .proof-pill {
+    .proof-box {
       background: #161616;
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 12px;
       padding: 8px 10px;
-      min-width: 205px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      border-radius: 10px;
+      font-size: 11px;
     }
 
-    .proof-name {
-      font-size: 10px;
-      color: #f1f1f1;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .proof-amount {
-      font-size: 12px;
-      color: #33d17a;
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .proof-location {
-      font-size: 10px;
-      color: #8f8f8f;
-      margin-top: 3px;
-    }
+    .green { color: #33d17a; }
 
     h1 {
+      text-align: center;
+      font-size: 28px;
       margin: 0;
+    }
+
+    .sub {
       text-align: center;
-      font-size: 30px;
-      line-height: 1.05;
-      font-weight: 800;
-      letter-spacing: -0.8px;
+      font-size: 13px;
+      color: #ccc;
+      margin: 10px 0;
     }
 
-    .green {
-      color: #33d17a;
-    }
-
-    .subhead {
-      margin: 14px auto 10px;
-      text-align: center;
-      color: #cfcfcf;
-      font-size: 14px;
-      line-height: 1.35;
-      font-weight: 700;
-      max-width: 300px;
-    }
-
-    .limited-pill {
-      margin: 10px auto 14px;
+    .pill {
       background: #f3deb1;
       color: #5d4a18;
-      border: 1px solid #ddc27d;
-      border-radius: 12px;
-      padding: 10px 12px;
-      font-size: 12px;
-      font-weight: 700;
+      padding: 8px;
+      border-radius: 10px;
       text-align: center;
-      max-width: 300px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    }
-
-    .context-box {
-      background: #151515;
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 12px;
-      padding: 11px 12px;
       font-size: 12px;
-      line-height: 1.35;
-      margin-bottom: 14px;
-      color: #e5e5e5;
+      margin: 10px 0;
     }
 
-    .steps-box {
-      background: #151515;
-      border: 1px solid rgba(255,255,255,0.06);
+    .reviews {
+      background: #161616;
       border-radius: 12px;
       padding: 12px;
-      margin-bottom: 14px;
-    }
-
-    .steps-title {
-      font-size: 14px;
-      font-weight: 800;
-      margin-bottom: 10px;
-      color: #ffffff;
-    }
-
-    .step-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .step-item {
-      display: grid;
-      grid-template-columns: 22px 1fr;
-      gap: 8px;
-      align-items: start;
-    }
-
-    .step-num {
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      background: #33d17a;
-      color: #08130d;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 800;
-      margin-top: 1px;
-    }
-
-    .step-text {
-      font-size: 12px;
-      line-height: 1.35;
-      color: #d9d9d9;
-    }
-
-    .reviews-box {
-      background: #161616;
-      border-radius: 14px;
-      padding: 14px 12px;
-      border: 1px solid rgba(255,255,255,0.05);
-      min-height: 390px;
-    }
-
-    .reviews-title {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 15px;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-
-    .title-stars {
-      color: #f5c543;
-      font-size: 14px;
-      line-height: 1;
-    }
-
-    .review-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      max-height: 330px;
-      overflow: hidden;
+      margin-top: 12px;
     }
 
     .review {
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      padding-bottom: 12px;
-    }
-
-    .review:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .review-stars {
-      color: #f5c543;
-      font-size: 12px;
-      margin-bottom: 6px;
-      letter-spacing: 1px;
-    }
-
-    .review-text {
-      color: #e1e1e1;
-      font-size: 14.5px;
-      line-height: 1.45;
-      margin-bottom: 8px;
-    }
-
-    .review-name {
-      font-size: 12px;
-      font-weight: 700;
-      color: #ffffff;
-    }
-
-    .review-location {
-      font-size: 11px;
-      color: #8e8e8e;
-      margin-top: 2px;
-    }
-
-    .next-step {
-      margin: 14px 0 12px;
-      text-align: center;
-      font-size: 12px;
-      color: #a6a6a6;
-      line-height: 1.4;
+      margin-bottom: 12px;
+      font-size: 14px;
     }
 
     .cta {
       display: block;
-      width: 100%;
+      margin-top: 14px;
       text-align: center;
       background: #f2f2f2;
-      color: #151515;
+      color: #000;
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: bold;
       text-decoration: none;
-      font-weight: 800;
-      font-size: 15px;
-      border-radius: 12px;
-      padding: 15px 14px;
-      box-shadow: 0 3px 10px rgba(255,255,255,0.05);
-      transition: transform 0.15s ease;
     }
 
-    .cta:active {
-      transform: scale(0.985);
-    }
-
-    .fineprint {
-      margin-top: 10px;
+    .next {
       text-align: center;
-      font-size: 10.5px;
-      color: #707070;
-      line-height: 1.4;
-    }
-
-    @media (max-width: 420px) {
-      .page {
-        padding: 10px 10px 18px;
-      }
-
-      .card {
-        border-radius: 16px;
-        padding: 16px 14px 20px;
-      }
-
-      h1 {
-        font-size: 29px;
-      }
-
-      .review-text {
-        font-size: 15px;
-      }
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 10px;
     }
   </style>
 </head>
+
 <body>
-  <div class="page">
-    <div class="phone-shell">
-      <div class="card">
+  <div class="container">
+    <div class="card">
 
-        <div class="top-proof">
-          <div class="proof-pill" id="proofBox">
-            <div class="proof-name">Loading...</div>
-          </div>
-        </div>
-
-        <h1>
-          Bills Were Adding Up Fast...<br>
-          So I Checked My <span class="green">Stimulus Eligibility</span>
-        </h1>
-
-        <div class="subhead">
-          Takes less than a minute to check your stimulus assistance eligibility
-        </div>
-
-        <div class="limited-pill">
-          ⚠ Limited-time review: Eligibility may change — check your status now
-        </div>
-
-        <div class="context-box">
-          💬 Many people check when trying to keep up with rent, groceries, utilities, tuition, and regular monthly bills.
-        </div>
-
-        <div class="steps-box">
-          <div class="steps-title">What to do on the next page</div>
-          <div class="step-list">
-            <div class="step-item">
-              <div class="step-num">1</div>
-              <div class="step-text">Enter your first and last name, then add your street address and zip code.</div>
-            </div>
-            <div class="step-item">
-              <div class="step-num">2</div>
-              <div class="step-text">Provide your email address, phone number, and date of birth.</div>
-            </div>
-            <div class="step-item">
-              <div class="step-num">3</div>
-              <div class="step-text">Confirm your information is accurate, then continue to review eligibility.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="reviews-box">
-          <div class="reviews-title">
-            <span class="title-stars">★</span>
-            <span>What People Are Saying</span>
-          </div>
-
-          <div class="review-list" id="reviewList"></div>
-        </div>
-
-        <div class="next-step">
-          Continue to check your eligibility and review available stimulus assistance options
-        </div>
-
-        <a href="https://trksy.org/aff_c?offer_id=1421&aff_id=170653" class="cta">Check My Eligibility →</a>
-
-        <div class="fineprint">
-          Results may vary. This site is not affiliated with any government agency.
-        </div>
-
+      <div class="proof">
+        <div class="proof-box" id="proofBox"></div>
       </div>
+
+      <h1>
+        Bills Were Adding Up Fast...<br>
+        So I Checked My <span class="green">Stimulus Eligibility</span>
+      </h1>
+
+      <div class="sub">
+        Takes less than a minute to check your eligibility
+      </div>
+
+      <div class="pill">
+        ⚠ Limited-time review: Eligibility may change — check your status now
+      </div>
+
+      <div class="reviews">
+        <div style="font-weight:bold;">★ What People Are Saying</div>
+        <div id="reviews"></div>
+      </div>
+
+      <div class="next">
+        Enter your details to check eligibility
+      </div>
+
+      <a href="https://trksy.org/aff_c?offer_id=1421&aff_id=170653" class="cta">
+        Check My Eligibility →
+      </a>
+
     </div>
   </div>
 
   <script>
     const proofs = [
-      { name: "Samantha J.", amount: "Was approved for stimulus assistance", location: "Phoenix, AZ" },
-      { name: "Tyler M.", amount: "Was approved for stimulus assistance", location: "Orlando, FL" },
-      { name: "Kayla R.", amount: "Was approved for stimulus assistance", location: "Charlotte, NC" },
-      { name: "Jordan L.", amount: "Was approved for stimulus assistance", location: "Dallas, TX" },
-      { name: "Monica S.", amount: "Was approved for stimulus assistance", location: "Atlanta, GA" },
-      { name: "David T.", amount: "Was approved for stimulus assistance", location: "Nashville, TN" },
-      { name: "Ashley B.", amount: "Was approved for stimulus assistance", location: "Houston, TX" },
-      { name: "Chris P.", amount: "Was approved for stimulus assistance", location: "Tampa, FL" },
-      { name: "Brianna M.", amount: "Was approved for stimulus assistance", location: "Columbus, OH" },
-      { name: "Eric D.", amount: "Was approved for stimulus assistance", location: "Jacksonville, FL" },
-      { name: "Nicole W.", amount: "Was approved for stimulus assistance", location: "Raleigh, NC" },
-      { name: "Marcus H.", amount: "Was approved for stimulus assistance", location: "San Antonio, TX" }
+      "Samantha J. • Phoenix, AZ",
+      "Tyler M. • Orlando, FL",
+      "Jordan L. • Dallas, TX",
+      "Ashley B. • Houston, TX",
+      "Marcus H. • San Antonio, TX"
     ];
 
     const reviews = [
-      {
-        text: "I honestly thought this was probably just another TikTok thing people were talking about, so I almost ignored it. But bills have been stacking up and I figured it made more sense to check than to keep assuming it wasn’t real or that it wouldn’t apply to me.",
-        name: "Brianna T.",
-        location: "Phoenix, AZ",
-        stars: "★★★★★"
-      },
-      {
-        text: "A friend sent this to me and told me I should at least look into it. I wasn’t expecting much at all, but I decided to check for myself instead of brushing it off. I’d rather know where I stand than keep wondering whether I missed something that could help.",
-        name: "Marcus L.",
-        location: "Orlando, FL",
-        stars: "★★★★★"
-      },
-      {
-        text: "I’m in school right now, and between books, groceries, and everything else, money has been tighter than I expected this semester. I wasn’t sure if this would even apply to me, but I’m glad I at least checked instead of automatically assuming no and moving on.",
-        name: "Danielle R.",
-        location: "Columbus, OH",
-        stars: "★★★★☆"
-      },
-      {
-        text: "Gas, food, and regular monthly expenses have all gone up lately, and it’s been hard to stay ahead of everything. I figured it wouldn’t hurt to check my stimulus eligibility and see what options might be there, especially since I’ve been trying to get ahead instead of falling further behind.",
-        name: "Jasmine C.",
-        location: "Houston, TX",
-        stars: "★★★★★"
-      },
-      {
-        text: "I was actually kind of shocked that I might qualify at all. I went into it assuming there probably wouldn’t be anything there for me, but with rent and utilities getting harder to manage, I still wanted to verify it for myself instead of writing it off too early.",
-        name: "Eric W.",
-        location: "Tampa, FL",
-        stars: "★★★★★"
-      },
-      {
-        text: "Between my car payment, groceries, and trying to stay on top of phone and internet bills, I’ve been looking for anything that could ease some pressure. Checking this was quick, and at the very least it helped me understand what I might qualify for instead of just hoping things would get easier on their own.",
-        name: "Monica P.",
-        location: "Atlanta, GA",
-        stars: "★★★★☆"
-      },
-      {
-        text: "I’m a college student and this semester has been way more expensive than I planned for. Tuition, books, and basic living costs were stacking up all at once, so I checked to see if there was anything I could qualify for. I didn’t expect much, but I’m glad I didn’t just scroll past it.",
-        name: "Kayla M.",
-        location: "Charlotte, NC",
-        stars: "★★★★★"
-      },
-      {
-        text: "Money has been tighter than usual lately, especially with groceries and rent both going up. I didn’t want to miss something that might actually help, so I took a minute to check instead of putting it off again. I’d rather know for sure than keep wondering whether something was out there.",
-        name: "Jordan H.",
-        location: "Dallas, TX",
-        stars: "★★★★★"
-      },
-      {
-        text: "I’ve been trying to keep up with regular bills while also helping out more at home, and it’s been adding up faster than I thought. I checked stimulus assistance mostly to see if it was worth looking into, and I’m glad I did because it gave me a better idea of what my next step should be.",
-        name: "Ashley B.",
-        location: "Nashville, TN",
-        stars: "★★★★★"
-      },
-      {
-        text: "I’m in school and also working part time, so balancing class costs with groceries and rent has been rough lately. I didn’t think I’d qualify for much, but I still wanted to check before ruling it out completely. It felt better to verify it for myself than to assume it wasn’t meant for me.",
-        name: "Nicole W.",
-        location: "Raleigh, NC",
-        stars: "★★★★☆"
-      },
-      {
-        text: "My cousin mentioned this to me first and I almost brushed it off because I thought it sounded too good to be worth checking. But my bills were starting to stack up at the same time, and I was getting tired of feeling like I was always trying to catch up, so I decided to look into it.",
-        name: "Chris D.",
-        location: "Jacksonville, FL",
-        stars: "★★★★★"
-      },
-      {
-        text: "Between rent, groceries, and my phone bill, I’ve been watching every dollar a lot more carefully lately. I wasn’t expecting anything huge, but I still felt like it made sense to check and see whether I qualified instead of just guessing and moving on.",
-        name: "Monica R.",
-        location: "San Antonio, TX",
-        stars: "★★★★★"
-      }
+      "I thought this was just another TikTok thing honestly, but I checked anyway because my bills have been stacking up lately.",
+      "A friend sent this to me and told me to at least look into it, so I finally did instead of ignoring it again.",
+      "I didn’t think I’d qualify for anything at all, so I was honestly surprised just seeing what was available.",
+      "Between rent and groceries going up, I figured it wouldn’t hurt to check instead of guessing.",
+      "I almost skipped it completely but decided to check anyway just to see if anything applied to me.",
+      "I’ve been trying to stay ahead of bills lately and this was one of the few things that actually felt worth checking.",
+      "I saw people talking about this and thought it sounded fake at first, but I still checked just in case.",
+      "Money has been tighter than usual lately so I figured I should at least see what I qualify for."
     ];
 
-    let proofIndex = 0;
-    let reviewIndex = 0;
+    let pIndex = 0;
+    let rIndex = 0;
 
     function updateProof() {
-      const p = proofs[proofIndex];
-      document.getElementById("proofBox").innerHTML = `
-        <div class="proof-name">${p.name}</div>
-        <div class="proof-amount">${p.amount}</div>
-        <div class="proof-location">${p.location}</div>
-      `;
-      proofIndex = (proofIndex + 1) % proofs.length;
+      document.getElementById("proofBox").innerHTML =
+        proofs[pIndex] + "<br><span class='green'>Was approved for stimulus assistance</span>";
+      pIndex = (pIndex + 1) % proofs.length;
     }
 
-    function renderReviews(startIndex) {
-      const reviewList = document.getElementById("reviewList");
+    function updateReviews() {
       let html = "";
-
       for (let i = 0; i < 3; i++) {
-        const review = reviews[(startIndex + i) % reviews.length];
-        html += `
-          <div class="review">
-            <div class="review-stars">${review.stars}</div>
-            <div class="review-text">${review.text}</div>
-            <div class="review-name">${review.name}</div>
-            <div class="review-location">${review.location}</div>
-          </div>
-        `;
+        html += `<div class="review">${reviews[(rIndex + i) % reviews.length]}</div>`;
       }
-
-      reviewList.innerHTML = html;
+      document.getElementById("reviews").innerHTML = html;
+      rIndex = (rIndex + 1) % reviews.length;
     }
 
     updateProof();
-    renderReviews(reviewIndex);
+    updateReviews();
 
-    setInterval(() => {
-      updateProof();
-    }, 2500);
-
-    setInterval(() => {
-      reviewIndex = (reviewIndex + 1) % reviews.length;
-      renderReviews(reviewIndex);
-    }, 5000);
+    setInterval(updateProof, 2500);
+    setInterval(updateReviews, 4000);
   </script>
 </body>
 </html>

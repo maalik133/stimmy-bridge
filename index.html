@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Stimulus Assistance</title>
+
   <style>
     * {
       box-sizing: border-box;
@@ -89,10 +90,10 @@
     h1 {
       margin: 0;
       text-align: center;
-      font-size: 31px;
-      line-height: 1.03;
+      font-size: 30px;
+      line-height: 1.05;
       font-weight: 800;
-      letter-spacing: -0.9px;
+      letter-spacing: -0.8px;
     }
 
     .green {
@@ -116,7 +117,6 @@
       border-radius: 12px;
       padding: 11px 12px;
       display: flex;
-      align-items: flex-start;
       gap: 8px;
       margin: 12px 0 14px;
       font-size: 11.5px;
@@ -124,18 +124,12 @@
       font-weight: 700;
     }
 
-    .context-icon {
-      flex: 0 0 auto;
-      font-size: 13px;
-      margin-top: 1px;
-    }
-
     .reviews-box {
       background: #161616;
       border-radius: 14px;
       padding: 14px 12px;
       border: 1px solid rgba(255,255,255,0.05);
-      min-height: 352px;
+      min-height: 350px;
     }
 
     .reviews-title {
@@ -175,7 +169,6 @@
       color: #f5c543;
       font-size: 12px;
       margin-bottom: 6px;
-      letter-spacing: 1px;
     }
 
     .review-text {
@@ -188,7 +181,6 @@
     .review-name {
       font-size: 12px;
       font-weight: 700;
-      color: #ffffff;
     }
 
     .review-location {
@@ -202,7 +194,6 @@
       text-align: center;
       font-size: 12px;
       color: #a6a6a6;
-      line-height: 1.4;
     }
 
     .cta {
@@ -215,13 +206,7 @@
       font-weight: 800;
       font-size: 15px;
       border-radius: 12px;
-      padding: 15px 14px;
-      box-shadow: 0 3px 10px rgba(255,255,255,0.05);
-      transition: transform 0.15s ease;
-    }
-
-    .cta:active {
-      transform: scale(0.985);
+      padding: 15px;
     }
 
     .fineprint {
@@ -229,54 +214,30 @@
       text-align: center;
       font-size: 10.5px;
       color: #707070;
-      line-height: 1.4;
-    }
-
-    @media (max-width: 420px) {
-      .page {
-        padding: 10px 10px 18px;
-      }
-
-      .card {
-        border-radius: 16px;
-        padding: 16px 14px 20px;
-      }
-
-      h1 {
-        font-size: 29px;
-      }
-
-      .review-text {
-        font-size: 15px;
-      }
     }
   </style>
 </head>
+
 <body>
   <div class="page">
     <div class="phone-shell">
       <div class="card">
 
         <div class="top-proof">
-          <div class="proof-pill" id="proofBox">
-            <div class="proof-name">Loading...</div>
-          </div>
+          <div class="proof-pill" id="proofBox"></div>
         </div>
 
         <h1>
-          College Was Getting Too Expensive...<br>
-          So I Looked Into <span class="green">This</span>
+          Bills Were Adding Up Fast...<br>
+          So I Checked My <span class="green">Stimulus Eligibility</span>
         </h1>
 
         <div class="subhead">
-          I didn’t think this would apply to me either, but checking took less time than I expected
+          Takes less than a minute to check your stimulus assistance eligibility
         </div>
 
         <div class="context-box">
-          <div class="context-icon">💬</div>
-          <div>
-            A lot of people check when they’re trying to stay ahead of tuition, rent, groceries, utilities, or other monthly expenses.
-          </div>
+          💬 Many people check when trying to keep up with rent, groceries, utilities, and monthly bills.
         </div>
 
         <div class="reviews-box">
@@ -289,13 +250,15 @@
         </div>
 
         <div class="next-step">
-          Continue to check your eligibility and review available stimulus assistance options
+          Continue to check your eligibility and review available options
         </div>
 
-        <a href="https://trksy.org/aff_c?offer_id=1421&aff_id=170653" class="cta">Check My Eligibility →</a>
+        <a href="https://trksy.org/aff_c?offer_id=1421&aff_id=170653" class="cta">
+          Check My Eligibility →
+        </a>
 
         <div class="fineprint">
-          Results may vary. This site is not affiliated with any government agency.
+          Results may vary. Not affiliated with any government agency.
         </div>
 
       </div>
@@ -307,60 +270,32 @@
       { name: "Samantha J.", amount: "Was approved for stimulus assistance", location: "Phoenix, AZ" },
       { name: "Tyler M.", amount: "Started the application process", location: "Orlando, FL" },
       { name: "Kayla R.", amount: "Reviewed available options", location: "Charlotte, NC" },
-      { name: "Jordan L.", amount: "Completed eligibility check", location: "Dallas, TX" },
-      { name: "Monica S.", amount: "Was approved for stimulus assistance", location: "Atlanta, GA" },
-      { name: "David T.", amount: "Started the application process", location: "Nashville, TN" },
-      { name: "Ashley B.", amount: "Reviewed available options", location: "Houston, TX" },
-      { name: "Chris P.", amount: "Completed eligibility check", location: "Tampa, FL" }
+      { name: "Jordan L.", amount: "Completed eligibility check", location: "Dallas, TX" }
     ];
 
     const reviews = [
       {
-        text: "I’m in school full time and between tuition, books, and groceries, everything started piling up faster than I expected. I didn’t think I’d qualify for anything, but I checked anyway because I needed to see what was out there.",
+        text: "Rent, groceries, and everything else started piling up recently. I didn’t think I’d qualify for anything, but I checked anyway just to be sure.",
         name: "Brianna T.",
-        location: "Tempe, AZ",
+        location: "Phoenix, AZ",
         stars: "★★★★★"
       },
       {
-        text: "Rent, utilities, and food have been eating up most of what I make, and college on top of that has been rough. I kept putting this off, but I finally looked into it because I needed some kind of breathing room.",
+        text: "I work full time and still feel like I’m always catching up on bills. I finally decided to check stimulus assistance just to see what was out there.",
         name: "Marcus L.",
         location: "Orlando, FL",
         stars: "★★★★★"
       },
       {
-        text: "I honestly assumed this wouldn’t apply to me, but school expenses have been hitting harder this semester than I planned for. Once I actually went through it, it made more sense than I expected and felt worth checking.",
+        text: "Gas, food, and monthly expenses have been hitting harder this year. I wasn’t sure if I’d qualify, but it was quick to check.",
         name: "Danielle R.",
         location: "Columbus, OH",
         stars: "★★★★☆"
       },
       {
-        text: "I’ve been trying to stay on top of tuition payments while also covering gas and groceries every week. I didn’t want to waste time, but the process was simple enough that I’m glad I gave it a shot.",
+        text: "Between rent and utilities, things have been tight lately. I figured it wouldn’t hurt to check my eligibility.",
         name: "Jasmine C.",
         location: "Houston, TX",
-        stars: "★★★★★"
-      },
-      {
-        text: "My biggest issue lately has been juggling class costs with basic bills like rent and my phone. I almost scrolled past this, but I figured it was better to check than keep wondering whether I qualified.",
-        name: "Eric W.",
-        location: "Tampa, FL",
-        stars: "★★★★★"
-      },
-      {
-        text: "Between books, food, and trying to keep my car paid for, college has been more expensive than I thought it would be. I looked into this mostly out of curiosity, but I’m glad I did because it gave me a clearer idea of my options.",
-        name: "Monica P.",
-        location: "Atlanta, GA",
-        stars: "★★★★☆"
-      },
-      {
-        text: "I’ve been stressed trying to cover semester costs while still paying for groceries and utilities every month. I didn’t expect much, but checking at least helped me see whether it was worth moving forward.",
-        name: "Kayla M.",
-        location: "Charlotte, NC",
-        stars: "★★★★★"
-      },
-      {
-        text: "Money has been tight enough already, and once school fees started stacking on top of my regular bills, I knew I needed to look into every option I could. This was one of the few things that actually felt easy to check.",
-        name: "Jordan H.",
-        location: "Phoenix, AZ",
         stars: "★★★★★"
       }
     ];
@@ -378,12 +313,12 @@
       proofIndex = (proofIndex + 1) % proofs.length;
     }
 
-    function renderReviews(startIndex) {
+    function renderReviews() {
       const reviewList = document.getElementById("reviewList");
       let html = "";
 
       for (let i = 0; i < 3; i++) {
-        const review = reviews[(startIndex + i) % reviews.length];
+        const review = reviews[(reviewIndex + i) % reviews.length];
         html += `
           <div class="review">
             <div class="review-stars">${review.stars}</div>
@@ -398,15 +333,12 @@
     }
 
     updateProof();
-    renderReviews(reviewIndex);
+    renderReviews();
 
-    setInterval(() => {
-      updateProof();
-    }, 3000);
-
+    setInterval(updateProof, 3000);
     setInterval(() => {
       reviewIndex = (reviewIndex + 1) % reviews.length;
-      renderReviews(reviewIndex);
+      renderReviews();
     }, 5000);
   </script>
 </body>

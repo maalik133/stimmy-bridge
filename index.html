@@ -1,173 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stimulus Assistance</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Stimulus Assistance</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #000;
-  color: #fff;
-  text-align: center;
-}
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #070707;
+      color: #ffffff;
+    }
 
-.container {
-  padding: 20px;
-  max-width: 500px;
-  margin: auto;
-}
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 30%),
+        linear-gradient(180deg, #0b0b0b 0%, #050505 100%);
+    }
 
-h1 {
-  font-size: 28px;
-  line-height: 1.3;
-}
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 12px 10px 20px;
+    }
 
-.highlight {
-  color: #27d17f;
-}
+    .phone-shell {
+      width: 100%;
+      max-width: 390px;
+    }
 
-.sub {
-  color: #ff6a4d;
-  margin: 15px 0;
-  font-size: 16px;
-}
+    .card {
+      width: 100%;
+      background: #000000;
+      border-radius: 18px;
+      padding: 16px 14px 20px;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+    }
 
-.warning {
-  background: #e7d3a5;
-  color: #000;
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 14px;
-  margin: 15px 0;
-}
+    .top-proof {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 14px;
+      min-height: 52px;
+    }
 
-.timer {
-  font-size: 22px;
-  margin: 10px 0;
-}
+    .proof-pill {
+      background: #161616;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 8px 10px;
+      min-width: 190px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    }
 
-.reviews {
-  margin-top: 20px;
-}
+    .proof-name {
+      font-size: 10px;
+      color: #f1f1f1;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
 
-.review {
-  background: #111;
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  text-align: left;
-}
+    .proof-amount {
+      font-size: 12px;
+      color: #33d17a;
+      font-weight: 700;
+      line-height: 1.2;
+    }
 
-.stars {
-  color: gold;
-  font-size: 18px;
-}
+    .proof-location {
+      font-size: 10px;
+      color: #8f8f8f;
+      margin-top: 3px;
+    }
 
-.review p {
-  font-size: 16px;
-  line-height: 1.4;
-  margin: 8px 0;
-}
+    h1 {
+      margin: 0;
+      text-align: center;
+      font-size: 31px;
+      line-height: 1.03;
+      font-weight: 800;
+      letter-spacing: -0.9px;
+    }
 
-.name {
-  font-weight: bold;
-  font-size: 15px;
-}
+    .green {
+      color: #33d17a;
+    }
 
-.location {
-  font-size: 13px;
-  color: #aaa;
-}
+    .subhead {
+      margin: 14px auto 12px;
+      text-align: center;
+      color: #cfcfcf;
+      font-size: 14px;
+      line-height: 1.38;
+      font-weight: 700;
+      max-width: 310px;
+    }
 
-.cta {
-  display: block;
-  background: #27d17f;
-  color: #000;
-  padding: 16px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  margin-top: 20px;
-  font-size: 18px;
-}
+    .context-box {
+      background: #151515;
+      color: #e5e5e5;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 11px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin: 12px 0 14px;
+      font-size: 11.5px;
+      line-height: 1.32;
+      font-weight: 700;
+    }
 
-.fineprint {
-  font-size: 11px;
-  color: #aaa;
-  margin-top: 10px;
-}
-</style>
+    .context-icon {
+      flex: 0 0 auto;
+      font-size: 13px;
+      margin-top: 1px;
+    }
+
+    .reviews-box {
+      background: #161616;
+      border-radius: 14px;
+      padding: 14px 12px;
+      border: 1px solid rgba(255,255,255,0.05);
+      min-height: 352px;
+    }
+
+    .reviews-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .title-stars {
+      color: #f5c543;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    .review-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-height: 290px;
+      overflow: hidden;
+    }
+
+    .review {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding-bottom: 12px;
+    }
+
+    .review:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .review-stars {
+      color: #f5c543;
+      font-size: 12px;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+
+    .review-text {
+      color: #e1e1e1;
+      font-size: 14.5px;
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+
+    .review-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .review-location {
+      font-size: 11px;
+      color: #8e8e8e;
+      margin-top: 2px;
+    }
+
+    .next-step {
+      margin: 14px 0 12px;
+      text-align: center;
+      font-size: 12px;
+      color: #a6a6a6;
+      line-height: 1.4;
+    }
+
+    .cta {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #f2f2f2;
+      color: #151515;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 15px;
+      border-radius: 12px;
+      padding: 15px 14px;
+      box-shadow: 0 3px 10px rgba(255,255,255,0.05);
+      transition: transform 0.15s ease;
+    }
+
+    .cta:active {
+      transform: scale(0.985);
+    }
+
+    .fineprint {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 10.5px;
+      color: #707070;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 420px) {
+      .page {
+        padding: 10px 10px 18px;
+      }
+
+      .card {
+        border-radius: 16px;
+        padding: 16px 14px 20px;
+      }
+
+      h1 {
+        font-size: 29px;
+      }
+
+      .review-text {
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="page">
+    <div class="phone-shell">
+      <div class="card">
 
-<div class="container">
+        <div class="top-proof">
+          <div class="proof-pill" id="proofBox">
+            <div class="proof-name">Loading...</div>
+          </div>
+        </div>
 
-<h1>
-You May Qualify For <span class="highlight">Stimulus Assistance</span><br>
-Check In Under 30 Seconds
-</h1>
+        <h1>
+          College Was Getting Too Expensive...<br>
+          So I Looked Into <span class="green">This</span>
+        </h1>
 
-<div class="sub">
-See if you qualify with just a few quick steps
-</div>
+        <div class="subhead">
+          I didn’t think this would apply to me either, but checking took less time than I expected
+        </div>
 
-<div class="warning">
-⚠️ Limited spots available. Check eligibility now.
-</div>
+        <div class="context-box">
+          <div class="context-icon">💬</div>
+          <div>
+            A lot of people check when they’re trying to stay ahead of tuition, rent, groceries, utilities, or other monthly expenses.
+          </div>
+        </div>
 
-<div class="timer" id="timer">9:47</div>
+        <div class="reviews-box">
+          <div class="reviews-title">
+            <span class="title-stars">★★★★★</span>
+            <span>What People Are Saying</span>
+          </div>
 
-<div class="reviews">
+          <div class="review-list" id="reviewList"></div>
+        </div>
 
-<div class="review">
-<div class="stars">★★★★★</div>
-<p>I applied just to see and actually got approved. Took less than 2 minutes.</p>
-<div class="name">Marcus D.</div>
-<div class="location">Houston, TX</div>
-</div>
+        <div class="next-step">
+          Continue to check your eligibility and review available stimulus assistance options
+        </div>
 
-<div class="review">
-<div class="stars">★★★★☆</div>
-<p>Didn’t expect anything but ended up qualifying. Pretty straightforward process.</p>
-<div class="name">Ashley R.</div>
-<div class="location">Phoenix, AZ</div>
-</div>
+        <a href="https://trksy.org/aff_c?offer_id=1421&aff_id=170653" class="cta">Check My Eligibility →</a>
 
-<div class="review">
-<div class="stars">★★★★★</div>
-<p>Quick and easy. Way faster than I thought it would be honestly.</p>
-<div class="name">Jordan T.</div>
-<div class="location">Atlanta, GA</div>
-</div>
+        <div class="fineprint">
+          Results may vary. This site is not affiliated with any government agency.
+        </div>
 
-</div>
+      </div>
+    </div>
+  </div>
 
-<!-- 🔥 DIRECT LINK (NO DELAY) -->
-<a href="https://trksy.org/aff_c?offer_id=1421&aff_id=170653" class="cta">
-Check My Eligibility →
-</a>
+  <script>
+    const proofs = [
+      { name: "Samantha J.", amount: "Was approved for stimulus assistance", location: "Phoenix, AZ" },
+      { name: "Tyler M.", amount: "Started the application process", location: "Orlando, FL" },
+      { name: "Kayla R.", amount: "Reviewed available options", location: "Charlotte, NC" },
+      { name: "Jordan L.", amount: "Completed eligibility check", location: "Dallas, TX" },
+      { name: "Monica S.", amount: "Was approved for stimulus assistance", location: "Atlanta, GA" },
+      { name: "David T.", amount: "Started the application process", location: "Nashville, TN" },
+      { name: "Ashley B.", amount: "Reviewed available options", location: "Houston, TX" },
+      { name: "Chris P.", amount: "Completed eligibility check", location: "Tampa, FL" }
+    ];
 
-<div class="fineprint">
-Results may vary. Not affiliated with any government agency.
-</div>
+    const reviews = [
+      {
+        text: "I’m in school full time and between tuition, books, and groceries, everything started piling up faster than I expected. I didn’t think I’d qualify for anything, but I checked anyway because I needed to see what was out there.",
+        name: "Brianna T.",
+        location: "Tempe, AZ",
+        stars: "★★★★★"
+      },
+      {
+        text: "Rent, utilities, and food have been eating up most of what I make, and college on top of that has been rough. I kept putting this off, but I finally looked into it because I needed some kind of breathing room.",
+        name: "Marcus L.",
+        location: "Orlando, FL",
+        stars: "★★★★★"
+      },
+      {
+        text: "I honestly assumed this wouldn’t apply to me, but school expenses have been hitting harder this semester than I planned for. Once I actually went through it, it made more sense than I expected and felt worth checking.",
+        name: "Danielle R.",
+        location: "Columbus, OH",
+        stars: "★★★★☆"
+      },
+      {
+        text: "I’ve been trying to stay on top of tuition payments while also covering gas and groceries every week. I didn’t want to waste time, but the process was simple enough that I’m glad I gave it a shot.",
+        name: "Jasmine C.",
+        location: "Houston, TX",
+        stars: "★★★★★"
+      },
+      {
+        text: "My biggest issue lately has been juggling class costs with basic bills like rent and my phone. I almost scrolled past this, but I figured it was better to check than keep wondering whether I qualified.",
+        name: "Eric W.",
+        location: "Tampa, FL",
+        stars: "★★★★★"
+      },
+      {
+        text: "Between books, food, and trying to keep my car paid for, college has been more expensive than I thought it would be. I looked into this mostly out of curiosity, but I’m glad I did because it gave me a clearer idea of my options.",
+        name: "Monica P.",
+        location: "Atlanta, GA",
+        stars: "★★★★☆"
+      },
+      {
+        text: "I’ve been stressed trying to cover semester costs while still paying for groceries and utilities every month. I didn’t expect much, but checking at least helped me see whether it was worth moving forward.",
+        name: "Kayla M.",
+        location: "Charlotte, NC",
+        stars: "★★★★★"
+      },
+      {
+        text: "Money has been tight enough already, and once school fees started stacking on top of my regular bills, I knew I needed to look into every option I could. This was one of the few things that actually felt easy to check.",
+        name: "Jordan H.",
+        location: "Phoenix, AZ",
+        stars: "★★★★★"
+      }
+    ];
 
-</div>
+    let proofIndex = 0;
+    let reviewIndex = 0;
 
-<script>
-// ⏳ countdown
-let time = 587;
-setInterval(() => {
-  let minutes = Math.floor(time / 60);
-  let seconds = time % 60;
-  document.getElementById("timer").innerText =
-    minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-  time--;
-}, 1000);
-</script>
+    function updateProof() {
+      const p = proofs[proofIndex];
+      document.getElementById("proofBox").innerHTML = `
+        <div class="proof-name">${p.name}</div>
+        <div class="proof-amount">${p.amount}</div>
+        <div class="proof-location">${p.location}</div>
+      `;
+      proofIndex = (proofIndex + 1) % proofs.length;
+    }
 
+    function renderReviews(startIndex) {
+      const reviewList = document.getElementById("reviewList");
+      let html = "";
+
+      for (let i = 0; i < 3; i++) {
+        const review = reviews[(startIndex + i) % reviews.length];
+        html += `
+          <div class="review">
+            <div class="review-stars">${review.stars}</div>
+            <div class="review-text">${review.text}</div>
+            <div class="review-name">${review.name}</div>
+            <div class="review-location">${review.location}</div>
+          </div>
+        `;
+      }
+
+      reviewList.innerHTML = html;
+    }
+
+    updateProof();
+    renderReviews(reviewIndex);
+
+    setInterval(() => {
+      updateProof();
+    }, 3000);
+
+    setInterval(() => {
+      reviewIndex = (reviewIndex + 1) % reviews.length;
+      renderReviews(reviewIndex);
+    }, 5000);
+  </script>
 </body>
 </html>

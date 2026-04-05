@@ -134,6 +134,54 @@
       color: #e5e5e5;
     }
 
+    .steps-box {
+      background: #151515;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 14px;
+    }
+
+    .steps-title {
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .step-item {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 8px;
+      align-items: start;
+    }
+
+    .step-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: #33d17a;
+      color: #08130d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      margin-top: 1px;
+    }
+
+    .step-text {
+      font-size: 12px;
+      line-height: 1.35;
+      color: #d9d9d9;
+    }
+
     .reviews-box {
       background: #161616;
       border-radius: 14px;
@@ -153,8 +201,8 @@
 
     .title-stars {
       color: #f5c543;
-      font-size: 13px;
-      letter-spacing: 1px;
+      font-size: 14px;
+      line-height: 1;
     }
 
     .review-list {
@@ -284,9 +332,27 @@
           💬 Many people check when trying to keep up with rent, groceries, utilities, tuition, and regular monthly bills.
         </div>
 
+        <div class="steps-box">
+          <div class="steps-title">What to do on the next page</div>
+          <div class="step-list">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-text">Enter your first and last name, then add your street address and zip code.</div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-text">Provide your email address, phone number, and date of birth.</div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-text">Confirm your information is accurate, then continue to review eligibility.</div>
+            </div>
+          </div>
+        </div>
+
         <div class="reviews-box">
           <div class="reviews-title">
-            <span class="title-stars">★★★★★</span>
+            <span class="title-stars">★</span>
             <span>What People Are Saying</span>
           </div>
 
@@ -325,13 +391,13 @@
 
     const reviews = [
       {
-        text: "Rent, groceries, and my electric bill had all started hitting at the same time, so I finally decided to check and see if I might qualify for anything. I honestly didn’t expect much going in, but it felt better to look into it than to keep wondering whether I was missing something that could help.",
+        text: "I honestly thought this was probably just another TikTok thing people were talking about, so I almost ignored it. But bills have been stacking up and I figured it made more sense to check than to keep assuming it wasn’t real or that it wouldn’t apply to me.",
         name: "Brianna T.",
         location: "Phoenix, AZ",
         stars: "★★★★★"
       },
       {
-        text: "I work full time and still felt like I was always behind on bills by the end of the month. Between gas, food, and regular expenses, things were adding up faster than I wanted. I kept seeing people mention stimulus assistance, so I finally checked for myself instead of ignoring it again.",
+        text: "A friend sent this to me and told me I should at least look into it. I wasn’t expecting much at all, but I decided to check for myself instead of brushing it off. I’d rather know where I stand than keep wondering whether I missed something that could help.",
         name: "Marcus L.",
         location: "Orlando, FL",
         stars: "★★★★★"
@@ -349,7 +415,7 @@
         stars: "★★★★★"
       },
       {
-        text: "I almost scrolled past this because I assumed it probably wouldn’t apply to me. But with rent and utilities getting harder to manage lately, I decided it made more sense to check than to keep guessing. Even just understanding what I might qualify for felt worth the minute it took.",
+        text: "I was actually kind of shocked that I might qualify at all. I went into it assuming there probably wouldn’t be anything there for me, but with rent and utilities getting harder to manage, I still wanted to verify it for myself instead of writing it off too early.",
         name: "Eric W.",
         location: "Tampa, FL",
         stars: "★★★★★"
@@ -385,13 +451,13 @@
         stars: "★★★★☆"
       },
       {
-        text: "My bills were starting to stack up at the same time, and I was getting tired of feeling like I was always trying to catch up. I checked my stimulus eligibility because I wanted to know whether there was anything available before I wrote it off completely.",
+        text: "My cousin mentioned this to me first and I almost brushed it off because I thought it sounded too good to be worth checking. But my bills were starting to stack up at the same time, and I was getting tired of feeling like I was always trying to catch up, so I decided to look into it.",
         name: "Chris D.",
         location: "Jacksonville, FL",
         stars: "★★★★★"
       },
       {
-        text: "Between rent, groceries, and my phone bill, I’ve been watching every dollar a lot more carefully lately. I wasn’t expecting anything huge, but I still felt like it made sense to check and see whether I qualified instead of just guessing.",
+        text: "Between rent, groceries, and my phone bill, I’ve been watching every dollar a lot more carefully lately. I wasn’t expecting anything huge, but I still felt like it made sense to check and see whether I qualified instead of just guessing and moving on.",
         name: "Monica R.",
         location: "San Antonio, TX",
         stars: "★★★★★"
